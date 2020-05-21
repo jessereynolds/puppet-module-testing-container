@@ -8,9 +8,8 @@ before_script:
   - rm -rf $GEM_HOME/bundler/ $GEM_HOME/cache/bundler/
   - rm -rf .bundle/
   - rm -rf vendor/cache/
-  - rm -rf Gemfile.lock
   - gem uninstall rubygems-bundler open_gem
-  - bundle env
+  - ls -ld /tmp
   - bundle install --without system_tests --path /bundle --jobs $(nproc)
   - eval $(ssh-agent -s)
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
