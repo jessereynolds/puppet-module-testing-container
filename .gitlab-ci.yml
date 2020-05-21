@@ -9,6 +9,7 @@ before_script:
   - rm -rf .bundle/
   - rm -rf vendor/cache/
   - gem uninstall rubygems-bundler open_gem
+  - touch /tmp/aaaaaaaa
   - ls -la /tmp
   - df -k
   - bundle install --without system_tests --path /bundle --jobs $(nproc)
