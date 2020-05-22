@@ -4,15 +4,6 @@ before_script:
   - bundle -v
   - gem --version
   - rm Gemfile.lock || true
-  - rm -rf ~/.bundle/ ~/.gem/bundler/ ~/.gems/cache/bundler/
-  - rm -rf $GEM_HOME/bundler/ $GEM_HOME/cache/bundler/
-  - rm -rf .bundle/
-  - rm -rf vendor/cache/
-  - gem uninstall rubygems-bundler open_gem
-  - touch /tmp/aaaaaaaa
-  - ls -la /tmp
-  - df -k
-  - mount
   - scripts/debug_gitlab_runner_ruby_tmpdir.rb
   - bundle install --without system_tests --path /bundle --jobs $(nproc)
   - eval $(ssh-agent -s)
@@ -28,7 +19,6 @@ syntax:
     - bundle exec rake syntax check:symlinks check:git_ignore check:dot_underscore
   variables:
     PUPPET_GEM_VERSION: '~> 6'
-    TMPDIR: '/var/tmp'
 
 unit:
   image: puppet_module_testing:latest
@@ -36,5 +26,4 @@ unit:
     - bundle exec rake parallel_spec
   variables:
     PUPPET_GEM_VERSION: '~> 6'
-    TMPDIR: '/var/tmp'
 
