@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "tmpdir"
-dir = File.expand_path("/tmp")
+dir = File.expand_path("/var/tmp")
 puts dir.inspect
 stat = File.stat(dir)
 puts "directory? #{stat.directory?}"

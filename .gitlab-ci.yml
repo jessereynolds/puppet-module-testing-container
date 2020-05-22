@@ -1,6 +1,5 @@
 ---
 before_script:
-  - mkdir -p "${TMPDIR}"
   - ruby -v
   - bundle -v
   - gem --version
@@ -29,7 +28,7 @@ syntax:
     - bundle exec rake syntax check:symlinks check:git_ignore check:dot_underscore
   variables:
     PUPPET_GEM_VERSION: '~> 6'
-    TMPDIR: '/var/tmp/tulips'
+    TMPDIR: '/var/tmp'
 
 unit:
   image: puppet_module_testing:latest
@@ -37,5 +36,5 @@ unit:
     - bundle exec rake parallel_spec
   variables:
     PUPPET_GEM_VERSION: '~> 6'
-    TMPDIR: '/var/tmp/tulips'
+    TMPDIR: '/var/tmp'
 
