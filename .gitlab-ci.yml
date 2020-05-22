@@ -12,6 +12,8 @@ before_script:
   - touch /tmp/aaaaaaaa
   - ls -la /tmp
   - df -k
+  - mount
+  - ruby -e 'require "tmpdir" ; puts Dir.tmpdir ; puts Dir.mktmpdir'
   - bundle install --without system_tests --path /bundle --jobs $(nproc)
   - eval $(ssh-agent -s)
   - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
